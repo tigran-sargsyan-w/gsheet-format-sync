@@ -3,7 +3,7 @@ function syncTemplateToCountrySheets() {
   const template = ss.getSheetByName("Template");
 
   // ✏️ Settings
-  const countrySheetNames = ["FR", "IT"];
+  const countrySheetNames = ["FR", "IT", "ES", "DE", "UK"];
 
   // 🪢 Up to which row and column to synchronize
   const NUM_ROWS = 13;
