@@ -23,17 +23,19 @@ Useful for e-commerce sellers who manage listings across **separate country-spec
 - *FR*, *IT*, etc. – Country-specific sheets to apply formatting to  
 - The script will apply only to the countries you list in the config section  
 
+![Sheet Structure](image.png)
+
 ---
 
 ## ⚙️ Configuration
 
 In the script:
 
-*-*
+```
 const countrySheetNames = ['FR', 'IT']; // Sheets to sync  
 const NUM_ROWS = 50;                    // Max rows to apply formatting to  
 const LAST_COLUMN = 'K';                // Last column (e.g. A–Z, AA–AZ, etc.)
-*-*
+```
 
 These constants define **how much of the sheet** will be synchronized (from cell A1 to *LAST_COLUMN × NUM_ROWS*).
 
@@ -41,9 +43,9 @@ These constants define **how much of the sheet** will be synchronized (from cell
 
 ## 📐 What Gets Synced
 
-*-*
-| Element                    | Synced | Notes                        |
-|---------------------------|--------|------------------------------|
+```
+| Element                   |Synced   | Notes                        |
+|---------------------------|---------|------------------------------|
 | Formatting (colors, font) | ✅     | Whole range                  |
 | Column widths             | ✅     | As in *Template*             |
 | Row heights               | ✅     | As in *Template*             |
@@ -52,7 +54,7 @@ These constants define **how much of the sheet** will be synchronized (from cell
 | Data in frozen rows       | ✅     | Headers preserved            |
 | Data in frozen columns    | ✅     | Left labels preserved        |
 | Other cell data           | ❌     | Data below frozen area kept  |
-*-*
+```
 
 ---
 
@@ -75,6 +77,8 @@ These constants define **how much of the sheet** will be synchronized (from cell
 You're selling candles on Amazon across Europe, and your sheet contains:  
 - One tab per country (*FR*, *IT*, etc.)  
 - A *Template* sheet with styling and headers  
+
+![Template sheet](image-1.png)
 
 You want all tabs to **look and behave the same**, with:  
 - Frozen top headers (*Name*, *Scent*, *Size*)  
