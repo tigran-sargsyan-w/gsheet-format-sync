@@ -25,16 +25,16 @@ function syncTemplateToCountrySheets() {
         continue;
       }
 
-      console.log(`🔄 Синхронизация листа: ${name}...`);
+      console.log(`🔄 Synchronizing sheet: ${name}...`);
 
-      // 💥 Очистка форматирования
+      // 💥 Clear formatting
       sheet.clearFormats();
 
-      // ❄️ Установка фиксации
+      // ❄️ Set freeze panes
       sheet.setFrozenRows(frozenRows);
       sheet.setFrozenColumns(frozenCols);
 
-      // 📐 Обеспечение нужного размера
+      // 📐 Ensure correct sheet size
       if (sheet.getMaxRows() < NUM_ROWS)
         sheet.insertRowsAfter(
           sheet.getMaxRows(),
@@ -46,37 +46,37 @@ function syncTemplateToCountrySheets() {
           NUM_COLS - sheet.getMaxColumns()
         );
 
-      // 🔁 Копируем зафиксированные строки (все колонки)
+      // 🔁 Copy frozen rows (all columns) with all datas
       if (frozenRows > 0) {
         const source = template.getRange(1, 1, frozenRows, NUM_COLS);
         const target = sheet.getRange(1, 1, frozenRows, NUM_COLS);
         source.copyTo(target, { formatOnly: false });
       }
 
-      // 🔁 Копируем зафиксированные столбцы (все строки)
+      // 🔁 Copy frozen columns (all rows) with all datas
       if (frozenCols > 0) {
         const source = template.getRange(1, 1, NUM_ROWS, frozenCols);
         const target = sheet.getRange(1, 1, NUM_ROWS, frozenCols);
         source.copyTo(target, { formatOnly: false });
       }
 
-      // 🎨 Копируем формат всего диапазона
+      // 🎨 Copy format of the entire range
       const targetRange = sheet.getRange(1, 1, NUM_ROWS, NUM_COLS);
       templateRange.copyTo(targetRange, { formatOnly: true });
 
-      // ↔️ Ширина столбцов
+      // ↔️ Setting Column widths
       for (let col = 1; col <= NUM_COLS; col++) {
         const width = template.getColumnWidth(col);
         sheet.setColumnWidth(col, width);
       }
 
-      // ↕️ Высота строк
+      // ↕️ Setting Row heights
       for (let row = 1; row <= NUM_ROWS; row++) {
         const height = template.getRowHeight(row);
         sheet.setRowHeight(row, height);
       }
 
-      // 🔗 Объединения
+      // 🔗 Merged ranges
       for (const range of mergedRanges) {
         const row = range.getRow();
         const col = range.getColumn();
@@ -85,14 +85,14 @@ function syncTemplateToCountrySheets() {
         sheet.getRange(row, col, rSpan, cSpan).merge();
       }
 
-      console.log(`✅ Готово: ${name}`);
+      console.log(`✅ Done: ${name}`);
     } catch (e) {
-      console.error(`❌ Ошибка при обработке ${name}: ${e}`);
+      console.error(`❌ Error processing ${name}: ${e}`);
     }
   }
 }
 
-// 🔠 Перевод буквы столбца в индекс (например, "K" → 11)
+// 🔠 Convert column letter to index (e.g., "K" → 11)
 function columnLetterToIndex(letter) {
   let col = 0;
   for (let i = 0; i < letter.length; i++) {
