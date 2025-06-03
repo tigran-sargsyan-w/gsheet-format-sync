@@ -88,8 +88,10 @@ function syncTemplateToCountrySheets() {
       console.log(`✅ Done: ${name}`);
     } catch (e) {
       console.error(`❌ Error processing ${name}: ${e}`);
+      SpreadsheetApp.getUi().alert('❌ Error processing ' + name + ': ' + e.message);
     }
   }
+  SpreadsheetApp.getUi().alert('✅ Synchronization complete!');
 }
 
 // 🔠 Convert column letter to index (e.g., "K" → 11)
