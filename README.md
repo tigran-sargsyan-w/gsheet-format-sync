@@ -23,7 +23,7 @@ Useful for e-commerce sellers who manage listings across **separate country-spec
 - *FR*, *IT*, etc. – Country-specific sheets to apply formatting to  
 - The script will apply only to the countries you list in the config section  
 
-![Sheet Structure](image.png)
+![Sheet Structure](examples/sheet_structure.png)
 
 ---
 
@@ -78,7 +78,7 @@ You're selling candles on Amazon across Europe, and your sheet contains:
 - One tab per country (*FR*, *IT*, etc.)  
 - A *Template* sheet with styling and headers  
 
-![Template sheet](image-1.png)
+![Template sheet](examples/template_sheet.png)
 
 You want all tabs to **look and behave the same**, with:  
 - Frozen top headers (*Name*, *Scent*, *Size*)  
